@@ -1,13 +1,12 @@
 import { styled } from "@mui/system";
+import useDog from "../../context/useDog";
 
 interface IImageContainer {
-  imageUrl: string;
   alt?: string;
-  handleNewDog: () => void;
 }
 
 const Container = styled("div")`
-  height: calc(100vh - 100px);
+  height: calc(100vh - 140px);
   width: 100%;
   border: 1px solid grey;
   border-radius: 10px;
@@ -29,17 +28,15 @@ const Image = styled("img")`
   border-radius: 10px;
 `;
 
-const ImageContainer: React.FC<IImageContainer> = ({
-  imageUrl,
-  alt = "Dog",
-  handleNewDog,
-}) => {
+const ImageContainer: React.FC<IImageContainer> = ({ alt = "Dog" }) => {
+  const { currentDog, getRandomDoggo } = useDog();
+
   return (
     <Container>
-      {imageUrl ? (
-        <Image src={imageUrl} alt={alt} />
+      {currentDog ? (
+        <Image src={currentDog} alt={alt} />
       ) : (
-        <EmptyMessage onClick={handleNewDog}>
+        <EmptyMessage onClick={getRandomDoggo}>
           Click "Here" to get a random doggo
         </EmptyMessage>
       )}

@@ -2,15 +2,21 @@ import _ from "lodash";
 import { createContext, useReducer } from "react";
 
 const initialContext = {
+  currentDog: "",
   collections: [],
 };
 
-const SavedImageContext = createContext<any>(initialContext);
+const DogContext = createContext<any>(initialContext);
 
 const saveReducer = (state: any, action: { payload: string; type: string }) => {
   const { payload, type } = action;
 
   switch (type) {
+    case "ADD_CURRENT_DOG":
+      return {
+        ...state,
+        currentDog: payload,
+      };
     case "ADD":
       return {
         ...state,
@@ -28,19 +34,15 @@ const saveReducer = (state: any, action: { payload: string; type: string }) => {
   }
 };
 
-interface ISaveImageProvider {
+interface IDogProvider {
   children: JSX.Element | JSX.Element[];
 }
 
-const SaveImageProvider = ({ children }: ISaveImageProvider) => {
+const DogProvider = ({ children }: IDogProvider) => {
   const reducer = useReducer(saveReducer, initialContext);
 
-  return (
-    <SavedImageContext.Provider value={reducer}>
-      {children}
-    </SavedImageContext.Provider>
-  );
+  return <DogContext.Provider value={reducer}>{children}</DogContext.Provider>;
 };
 
-export { SavedImageContext };
-export default SaveImageProvider;
+export { DogContext };
+export default DogProvider;

@@ -4,7 +4,7 @@ import { Box, Grid } from "@mui/material";
 import RandomDog from "./randomDog";
 import Saved from "./saved";
 
-import SavedImageProvider from "../context/SavedImageContext";
+import DogProvider from "../context/DogContext";
 
 const Container = styled(Box)`
   margin: auto 0;
@@ -22,12 +22,12 @@ const AppLayout = styled(Grid)`
 function App() {
   return (
     <Container>
-      <SavedImageProvider>
+      <DogProvider>
         <AppLayout>
           <RandomDog />
           <Saved />
         </AppLayout>
-      </SavedImageProvider>
+      </DogProvider>
     </Container>
   );
 }

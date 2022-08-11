@@ -1,5 +1,5 @@
 import { styled } from "@mui/system";
-import useSave from "../../context/useSave";
+import useDog from "../../context/useDog";
 
 const SavedContainer = styled("div")`
   display: flex;
@@ -19,26 +19,35 @@ const SavedImagesWrapper = styled("div")`
   display: flex;
   flex-direction: column;
   gap: 8px;
-  height: calc(100vh - 100px);
+  height: calc(100vh - 140px);
   overflow-y: scroll;
 `;
 
 const Image = styled("img")`
+  box-sizing: border-box;
   width: 100%;
   height: 160px;
   object-fit: cover;
   border-radius: 10px;
+  cursor: pointer;
+  :hover {
+    border: 2px solid blue;
+  }
 `;
 
 const Saved = () => {
-  const { savedDogs } = useSave();
+  const { savedDogs, udpateCurrentDog } = useDog();
 
   return (
     <SavedContainer>
       <H1>Saved</H1>
       <SavedImagesWrapper>
         {savedDogs.map((image: string) => (
-          <Image key={image} src={image} />
+          <Image
+            key={image}
+            src={image}
+            onClick={() => udpateCurrentDog(image)}
+          />
         ))}
       </SavedImagesWrapper>
     </SavedContainer>
