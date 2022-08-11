@@ -1,6 +1,7 @@
-# Getting Started with Create React App
+# Getting Started with Dog Zone
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Dogzone is a random photo generator for dog lovers :)
 
 ## Available Scripts
 
