@@ -8,7 +8,7 @@ interface IDogResponse {
 /**
  * GET a random dog image
  *
- * @return { Array<IEmployeeData> }
+ * @return { IDogResponse }
  */
 export async function fetchRandomDog(): Promise<IDogResponse> {
   const { data } = await http.get("breeds/image/random");
