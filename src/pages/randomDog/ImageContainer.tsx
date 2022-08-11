@@ -1,6 +1,4 @@
-import { Icon } from "@mui/material";
 import { styled } from "@mui/system";
-import { useState } from "react";
 
 interface IImageContainer {
   imageUrl: string;
