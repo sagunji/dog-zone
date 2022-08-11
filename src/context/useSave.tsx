@@ -11,7 +11,7 @@ const useSave = () => {
         payload: value,
       });
     },
-    [state.collections]
+    [dispatch, state.collections]
   );
 
   return { onSave, savedDogs: state.collections };
