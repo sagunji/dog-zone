@@ -10,7 +10,7 @@ interface IDogResponse {
  *
  * @return { Array<IEmployeeData> }
  */
-export async function fetchEmployees(): Promise<IDogResponse> {
+export async function fetchRandomDog(): Promise<IDogResponse> {
   const { data } = await http.get("breeds/image/random");
 
   return data;
