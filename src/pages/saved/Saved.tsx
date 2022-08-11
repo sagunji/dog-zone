@@ -1,7 +1,4 @@
 import { styled } from "@mui/system";
-import { useContext } from "react";
-
-import { SavedImageContext } from "../../context/SavedImageContext";
 import useSave from "../../context/useSave";
 
 const SavedContainer = styled("div")`
@@ -11,7 +8,7 @@ const SavedContainer = styled("div")`
 `;
 
 const H1 = styled("h1")`
-  text-align: right;
+  text-align: center;
   font-size: 24px;
   margin: 0;
   padding: 4px;

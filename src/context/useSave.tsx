@@ -6,10 +6,8 @@ const useSave = () => {
 
   const onSave = useCallback(
     (value = "DOGS") => {
-      const action = state.collections.includes(value) ? "REMOVE" : "ADD";
-
       dispatch({
-        type: action,
+        type: state.collections.includes(value) ? "REMOVE" : "ADD",
         payload: value,
       });
     },

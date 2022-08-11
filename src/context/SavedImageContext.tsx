@@ -1,8 +1,5 @@
-import React, { createContext, useReducer } from "react";
-
-// export type Context = {
-//   collections: string[];
-// };
+import _ from "lodash";
+import { createContext, useReducer } from "react";
 
 const initialContext = {
   collections: [],
@@ -17,12 +14,12 @@ const saveReducer = (state: any, action: { payload: string; type: string }) => {
     case "ADD":
       return {
         ...state,
-        collections: state.collections.concat([payload]),
+        collections: _.union(state.collections, [payload]),
       };
     case "REMOVE":
       return {
         ...state,
-        collections: state.collections.filter((val: string) => val !== payload),
+        collections: _.remove(state.collections, (item) => item !== payload),
       };
     default:
       return {
