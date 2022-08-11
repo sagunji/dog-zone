@@ -10,19 +10,15 @@ import useSave from "../../context/useSave";
 
 const RandomDog = () => {
   const [randomDog, setRandomDog] = useState<string>("");
-  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const { onSave } = useSave();
 
   const handleNewDog = async () => {
     try {
-      setIsLoading(true);
       const dog = await fetchRandomDog();
       setRandomDog(dog.message);
     } catch (e) {
       console.log(e);
-    } finally {
-      setIsLoading(false);
     }
   };
 
@@ -45,9 +41,10 @@ const RandomDog = () => {
           onClick={() => onSave(randomDog)}
           label={"Save Good Boy/Girl"}
           variant={"outlined"}
+          disabled={!randomDog}
         />
       </ButtonGroup>
-      <ImageContainer imageUrl={randomDog} />
+      <ImageContainer imageUrl={randomDog} handleNewDog={handleNewDog} />
     </Box>
   );
 };

@@ -1,9 +1,11 @@
+import { Icon } from "@mui/material";
 import { styled } from "@mui/system";
 import { useState } from "react";
 
 interface IImageContainer {
   imageUrl: string;
   alt?: string;
+  handleNewDog: () => void;
 }
 
 const Container = styled("div")`
@@ -11,7 +13,15 @@ const Container = styled("div")`
   width: 100%;
   border: 1px solid grey;
   border-radius: 10px;
-  background-color: #c3c3c3;
+  background-color: #e3e3e3;
+  display: flex;
+`;
+
+const EmptyMessage = styled("div")`
+  margin: auto;
+  color: #1876d1;
+  text-decoration: underline;
+  cursor: pointer;
 `;
 
 const Image = styled("img")`
@@ -24,9 +34,18 @@ const Image = styled("img")`
 const ImageContainer: React.FC<IImageContainer> = ({
   imageUrl,
   alt = "Dog",
+  handleNewDog,
 }) => {
   return (
-    <Container>{imageUrl && <Image src={imageUrl} alt={alt} />}</Container>
+    <Container>
+      {imageUrl ? (
+        <Image src={imageUrl} alt={alt} />
+      ) : (
+        <EmptyMessage onClick={handleNewDog}>
+          Click "Here" to get a random doggo
+        </EmptyMessage>
+      )}
+    </Container>
   );
 };
 
